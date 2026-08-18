@@ -124,6 +124,25 @@
   @keyframes pulse{0%{opacity:0.7;transform:scale(0.6);}80%{opacity:0;}100%{opacity:0;transform:scale(1);}}
   .radar .core{width:30px;height:30px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;z-index:2;}
 
+  /* orbit map - Toss-style radar with floating friend nodes */
+  .orbit-wrap{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:190px;}
+  .orbit-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--line);border-radius:50%;}
+  .orbit-ring.r1{width:38%;height:38%;}
+  .orbit-ring.r2{width:66%;height:66%;}
+  .orbit-ring.r3{width:94%;height:94%;}
+  .orbit-me{position:relative;width:32px;height:32px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;z-index:3;box-shadow:0 3px 10px rgba(124,92,255,0.35);}
+  .orbit-me .ring{position:absolute;border:1.5px solid var(--violet);border-radius:50%;opacity:0;animation:pulse 2.4s ease-out infinite;}
+  .orbit-me .ring:nth-child(1){width:180%;height:180%;animation-delay:0s;}
+  .orbit-me .ring:nth-child(2){width:260%;height:260%;animation-delay:0.8s;}
+  .orbit-me-label{position:absolute;top:50%;left:50%;transform:translate(-50%,20px);font-size:7px;color:var(--sub);font-weight:800;white-space:nowrap;}
+  .orbit-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:3px;z-index:2;animation:orbit-float 3s ease-in-out infinite;}
+  @keyframes orbit-float{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+  .orbit-node .av{width:28px;height:28px;border-radius:50%;background:#fff;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:13px;position:relative;box-shadow:0 3px 8px rgba(0,0,0,0.08);}
+  .orbit-node .av.selected{border-color:var(--violet);border-width:2px;}
+  .orbit-node .check{position:absolute;bottom:-2px;right:-2px;width:12px;height:12px;border-radius:50%;background:var(--violet);border:1.5px solid #fff;}
+  .orbit-node .check::after{content:"";position:absolute;left:3.5px;top:1.5px;width:3px;height:6px;border:solid #fff;border-width:0 1.5px 1.5px 0;transform:rotate(45deg);}
+  .orbit-node .cap{font-size:6.5px;font-weight:800;color:var(--ink);background:#fff;padding:2px 6px;border-radius:6px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,0.08);}
+
   .mini-radar{position:relative;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:none;}
   .mini-radar .ring{position:absolute;border:1.5px solid var(--violet);border-radius:50%;opacity:0;animation:pulse 2.4s ease-out infinite;}
   .mini-radar .ring:nth-child(1){width:60%;height:60%;}
@@ -494,16 +513,24 @@
           <div class="status"><span>9:41</span><span>🔋</span></div>
           <div class="content">
             <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:6px;">← &nbsp; 내주변 사람에게 공유</div>
-            <div class="radar-wrap">
-              <div class="radar">
-                <div class="ring"></div><div class="ring"></div><div class="ring"></div>
-                <div class="core"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg></div>
+            <div class="orbit-wrap">
+              <div class="orbit-ring r1"></div>
+              <div class="orbit-ring r2"></div>
+              <div class="orbit-ring r3"></div>
+              <div class="orbit-me">
+                <div class="ring"></div><div class="ring"></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg>
+                <div class="orbit-me-label">나</div>
+              </div>
+              <div class="orbit-node" style="top:20%;left:66%;">
+                <div class="av">🙂</div>
+                <div class="cap">근처 친구 1명</div>
               </div>
             </div>
             <div style="text-align:center;font-size:10px;font-weight:700;">현장에 있는 사람을<br>찾고 있어요</div>
           </div>
         </div>
-        <div class="screen-note">배너는 바텀시트 없이 원스텝으로 공용 STEP1(스캔·선택)로 바로 연결 — 헤더 경로(다채널 선택)보다 클릭 한 번 짧음.</div>
+        <div class="screen-note">배너는 바텀시트 없이 원스텝으로 공용 STEP1(스캔·선택)로 바로 연결 — 헤더 경로(다채널 선택)보다 클릭 한 번 짧음. 블루투스로 친구를 찾는 즉시 궤도 위에 아바타로 떠오르는 토스 스타일 연출 적용.</div>
       </div>
 
     </div>
@@ -523,35 +550,35 @@
           <div class="status"><span>9:41</span><span>🔋</span></div>
           <div class="content">
             <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:6px;">← &nbsp; 내주변 사람에게 공유</div>
-            <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;">
-              <div class="mini-radar">
+            <div style="text-align:center;font-size:9px;color:var(--violet);font-weight:800;margin-top:6px;">계속 찾는 중 · 3명 발견</div>
+            <div class="orbit-wrap">
+              <div class="orbit-ring r1"></div>
+              <div class="orbit-ring r2"></div>
+              <div class="orbit-ring r3"></div>
+              <div class="orbit-me">
                 <div class="ring"></div><div class="ring"></div>
-                <div class="core"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg></div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg>
+                <div class="orbit-me-label">나</div>
               </div>
-              <span style="font-size:9px;color:var(--violet);font-weight:800;">계속 찾는 중 · 3명 발견</span>
-            </div>
-            <div class="user-list-title" style="text-align:left;font-size:9px;color:var(--sub);font-weight:700;margin-top:8px;">받을 사람을 선택하세요</div>
-            <div class="user-row">
-              <div class="avatar">🙂</div>
-              <div class="info"><div class="name">근처 기기 · 1.8m</div><div class="dist">굿딜 사용자</div></div>
-              <div class="checkbox checked"></div>
-            </div>
-            <div class="user-row">
-              <div class="avatar">🙂</div>
-              <div class="info"><div class="name">근처 기기 · 2.4m</div><div class="dist">굿딜 사용자</div></div>
-              <div class="checkbox checked"></div>
-            </div>
-            <div class="user-row">
-              <div class="avatar">🙂</div>
-              <div class="info"><div class="name">근처 기기 · 5.1m</div><div class="dist">굿딜 사용자</div></div>
-              <div class="checkbox"></div>
+              <div class="orbit-node" style="top:8%;left:60%;">
+                <div class="av selected">🙂<div class="check"></div></div>
+                <div class="cap">1.8m · 선택됨</div>
+              </div>
+              <div class="orbit-node" style="top:62%;left:10%;animation-delay:1s;">
+                <div class="av selected">🙂<div class="check"></div></div>
+                <div class="cap">2.4m · 선택됨</div>
+              </div>
+              <div class="orbit-node" style="top:70%;left:68%;animation-delay:1.6s;">
+                <div class="av">🙂</div>
+                <div class="cap">5.1m</div>
+              </div>
             </div>
             <div class="send-cta">
               2명에게 혜택 보내기 <span class="x2" style="background:#fff;color:var(--violet);">×2</span>
             </div>
           </div>
         </div>
-        <div class="screen-note">레이더는 화면 상단에 작게 남겨 스캔이 계속 진행 중임을 표시(새 기기 발견 시 리스트에 실시간 추가). 타이틀만 진입 경로별로 다르게(A는 "공유", B는 "찾기"). 체크박스로 복수 선택 → 한 번에 전송, 닉네임 대신 거리·익명 표기로 프라이버시 보호, 리스트는 거리순 정렬.</div>
+        <div class="screen-note">토스 궤도 UI처럼 "나"를 중심에 두고 발견된 사람이 실시간으로 궤도 위 아바타로 떠오름 — 아바타를 탭하면 선택(보라 테두리 + 체크). 타이틀만 진입 경로별로 다르게(A는 "공유", B는 "찾기"). 닉네임 대신 거리·익명 표기로 프라이버시 보호.</div>
       </div>
 
       <div class="screen-card">
