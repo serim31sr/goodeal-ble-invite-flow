@@ -109,7 +109,7 @@
   .home-card{background:var(--bg);border-radius:10px;padding:8px;font-size:8px;color:var(--sub);margin-top:4px;}
   .home-card .row{display:flex;justify-content:space-between;margin-top:4px;}
   .fab-pill{
-    position:absolute;bottom:30px;left:6px;right:6px;background:#fff;border:1.5px solid var(--violet);border-radius:100px;
+    position:relative;margin-top:24px;left:6px;right:6px;background:#fff;border:1.5px solid var(--violet);border-radius:100px;
     padding:8px 10px;display:flex;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 10px rgba(124,92,255,0.18);
   }
   .fab-pill svg{flex:none;}
@@ -125,8 +125,8 @@
   .radar .core{width:30px;height:30px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;z-index:2;}
 
   /* orbit map - Toss-style radar with floating friend nodes */
-  .orbit-wrap{position:relative;flex:1;display:flex;align-items:center;justify-content:center;}
-  .orbit-square{position:relative;width:80%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
+  .orbit-wrap{position:relative;display:flex;align-items:center;justify-content:center;margin:10px 0;}
+  .orbit-square{position:relative;width:120px;height:120px;display:flex;align-items:center;justify-content:center;flex:none;}
   .orbit-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--line);border-radius:50%;}
   .orbit-ring.r1{width:38%;height:38%;}
   .orbit-ring.r2{width:66%;height:66%;}
@@ -548,10 +548,10 @@
         <div class="screen-title">발견되는 대로 바로 선택</div>
         <div class="phone">
           <div class="status"><span>9:41</span><span>🔋</span></div>
-          <div class="content" style="padding-bottom:14px;">
+          <div class="content">
             <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:6px;">← &nbsp; 내주변 사람에게 공유</div>
             <div style="text-align:center;font-size:9px;color:var(--violet);font-weight:800;margin-top:6px;">계속 찾는 중 · 3명 발견</div>
-            <div class="orbit-wrap" style="flex:0.85;">
+            <div class="orbit-wrap">
               <div class="orbit-square">
                 <div class="orbit-me">
                   <div class="ring"></div><div class="ring"></div>
@@ -572,7 +572,7 @@
                 </div>
               </div>
             </div>
-            <div class="send-cta">
+            <div class="send-cta" style="margin-top:14px;">
               2명에게 혜택 보내기 <span class="x2" style="background:#fff;color:var(--violet);">×2</span>
             </div>
           </div>
@@ -690,7 +690,7 @@
                 <div style="background:var(--blue-dim);color:var(--blue);border-radius:10px;padding:7px 9px;font-size:8px;font-weight:800;">친구공유 쿠폰<br>5% 할인</div>
                 <div style="background:var(--yellow);color:#5c4a00;border-radius:10px;padding:7px 9px;font-size:8px;font-weight:800;">웰컴쿠폰<br>2,000원</div>
               </div>
-              <div class="mini-btn" style="width:100%;justify-content:center;background:var(--violet);color:#fff;margin-top:12px;">쿠폰함에 담기</div>
+              <div class="mini-btn" style="width:100%;justify-content:center;background:var(--violet);color:#fff;margin-top:12px;">쿠폰 사용하러 가기</div>
             </div>
           </div>
           <div class="screen-note">친구가 보낸 쿠폰 + 신규/휴면 유저 대상 웰컴쿠폰을 한 번에 지급 — 수신자 입장에서 받는 가치가 배가되어 수락률↑.</div>
