@@ -111,7 +111,10 @@
   .fab-pill{
     position:relative;margin-top:auto;background:#fff;border:1.5px solid var(--violet);border-radius:100px;
     padding:8px 10px;display:flex;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 10px rgba(124,92,255,0.18);
+    cursor:pointer;transition:transform 0.12s ease,box-shadow 0.12s ease;
   }
+  .fab-pill:hover{box-shadow:0 5px 14px rgba(124,92,255,0.28);}
+  .fab-pill:active{transform:scale(0.96);box-shadow:0 2px 6px rgba(124,92,255,0.2);}
   .fab-pill svg{flex:none;}
   .fab-pill span{font-size:8.6px;font-weight:800;color:var(--violet);}
 
@@ -162,7 +165,9 @@
   .checkbox{width:15px;height:15px;border-radius:5px;border:1.5px solid var(--line);flex:none;}
   .checkbox.checked{background:var(--violet);border-color:var(--violet);position:relative;}
   .checkbox.checked::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid #fff;border-width:0 1.5px 1.5px 0;transform:rotate(45deg);}
-  .send-cta{margin-top:auto;background:var(--violet);color:#fff;font-size:10px;font-weight:800;text-align:center;padding:9px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px;}
+  .send-cta{margin-top:auto;background:var(--violet);color:#fff;font-size:10px;font-weight:800;text-align:center;padding:9px;border-radius:10px;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;transition:transform 0.12s ease,filter 0.12s ease;}
+  .send-cta:hover{filter:brightness(1.08);}
+  .send-cta:active{transform:scale(0.96);filter:brightness(0.94);}
 
   .reward-badge{background:var(--yellow);color:#5c4a00;font-weight:800;font-size:11px;border-radius:100px;padding:6px 12px;display:inline-flex;gap:4px;align-items:center;margin:8px auto 0;}
 
