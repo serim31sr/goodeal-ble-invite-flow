@@ -124,6 +124,12 @@
   @keyframes pulse{0%{opacity:0.7;transform:scale(0.6);}80%{opacity:0;}100%{opacity:0;transform:scale(1);}}
   .radar .core{width:30px;height:30px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;z-index:2;}
 
+  .mini-radar{position:relative;width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex:none;}
+  .mini-radar .ring{position:absolute;border:1.5px solid var(--violet);border-radius:50%;opacity:0;animation:pulse 2.4s ease-out infinite;}
+  .mini-radar .ring:nth-child(1){width:60%;height:60%;}
+  .mini-radar .ring:nth-child(2){width:100%;height:100%;animation-delay:0.8s;}
+  .mini-radar .core{width:16px;height:16px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;z-index:2;}
+
   /* nearby user select list */
   .user-list-title{font-size:10px;font-weight:800;text-align:center;margin-top:6px;}
   .user-row{
@@ -212,13 +218,11 @@
       <div class="converge">동의 완료 후 · 두 진입 모두 동일 로직으로 합류</div>
 
       <div class="shared-steps">
-        <div class="shared-step"><span class="n">STEP 1</span>근처 기기 스캔</div>
+        <div class="shared-step"><span class="n">STEP 1</span>스캔하며 대상 선택</div>
         <div class="step-arrow">→</div>
-        <div class="shared-step"><span class="n">STEP 2</span>대상 다중 선택</div>
+        <div class="shared-step"><span class="n">STEP 2</span>혜택 전송</div>
         <div class="step-arrow">→</div>
-        <div class="shared-step"><span class="n">STEP 3</span>혜택 전송</div>
-        <div class="step-arrow">→</div>
-        <div class="shared-step"><span class="n">STEP 4</span>친구 수신·사용</div>
+        <div class="shared-step"><span class="n">STEP 3</span>친구 수신·사용</div>
       </div>
 
       <div class="end-row">
@@ -249,8 +253,8 @@
                 <div class="ctext"><b>[필수] 블루투스 이용 약관 동의</b><span class="clink">전문보기</span></div>
               </div>
               <div class="consent-row">
-                <div class="checkbox checked"></div>
-                <div class="ctext"><b>[필수] 위치기반서비스 이용약관 동의</b><span class="clink">전문보기</span></div>
+                <div class="checkbox"></div>
+                <div class="ctext"><b>[선택] 위치기반서비스 이용약관 동의</b><span class="clink">전문보기</span></div>
               </div>
               <div class="consent-row">
                 <div class="checkbox"></div>
@@ -384,7 +388,7 @@
             <div style="font-size:7.5px;color:var(--sub);margin-top:8px;">앱을 꺼둬도 알림으로 계속 안내해드려요</div>
           </div>
         </div>
-        <div class="screen-note">가입·권한·알림 동의가 모두 끝난 시점 — 이후엔 공용 STEP1(스캔)로 자동 진입, 백그라운드 케이스(섹션 8)로 자연스럽게 연결.</div>
+        <div class="screen-note">가입·권한·알림 동의가 모두 끝난 시점 — 이후엔 공용 STEP1(스캔·선택)로 자동 진입, 백그라운드 케이스(섹션 8)로 자연스럽게 연결.</div>
       </div>
 
     </div>
@@ -499,7 +503,7 @@
             <div style="text-align:center;font-size:10px;font-weight:700;">현장에 있는 사람을<br>찾고 있어요</div>
           </div>
         </div>
-        <div class="screen-note">배너는 바텀시트 없이 원스텝으로 공용 STEP1(스캔)로 바로 연결 — 헤더 경로(다채널 선택)보다 클릭 한 번 짧음.</div>
+        <div class="screen-note">배너는 바텀시트 없이 원스텝으로 공용 STEP1(스캔·선택)로 바로 연결 — 헤더 경로(다채널 선택)보다 클릭 한 번 짧음.</div>
       </div>
 
     </div>
@@ -507,39 +511,26 @@
 
   <!-- SHARED STEPS -->
   <section>
-    <div class="section-title">5. 공용 — 스캔 · 현장 유저 선택 · 전송</div>
-    <div class="section-sub">A/B 어느 진입이든 동일. 발견된 사람 중 원하는 대상을 여러 명 골라 한 번에 보낼 수 있음.</div>
+    <div class="section-title">5. 공용 — 스캔하며 현장 유저 선택 · 전송</div>
+    <div class="section-sub">A/B 어느 진입이든 동일. 스캔과 선택을 한 화면으로 통합 — 기기가 발견되는 즉시 리스트에 나타나고 그 자리에서 바로 여러 명 골라 전송.</div>
     <div class="flow-row">
 
       <div class="screen-card">
         <span class="tag shared">공용 · STEP 1</span>
-        <div class="screen-num">스캔</div>
-        <div class="screen-title">근처 기기 스캔 중</div>
+        <div class="screen-num">스캔 + 선택</div>
+        <div class="screen-title">발견되는 대로 바로 선택</div>
         <div class="phone">
           <div class="status"><span>9:41</span><span>🔋</span></div>
           <div class="content">
             <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:6px;">← &nbsp; 내주변 사람에게 공유</div>
-            <div class="radar-wrap">
-              <div class="radar">
-                <div class="ring"></div><div class="ring"></div><div class="ring"></div>
-                <div class="core"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg></div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-top:8px;">
+              <div class="mini-radar">
+                <div class="ring"></div><div class="ring"></div>
+                <div class="core"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg></div>
               </div>
+              <span style="font-size:9px;color:var(--violet);font-weight:800;">계속 찾는 중 · 3명 발견</span>
             </div>
-            <div style="text-align:center;font-size:10px;font-weight:700;">현장에 있는 사람을<br>찾고 있어요</div>
-          </div>
-        </div>
-        <div class="screen-note">타이틀만 진입 경로별로 다르게(A는 "공유", B는 "찾기"), UI·로직은 완전 동일.</div>
-      </div>
-
-      <div class="screen-card">
-        <span class="tag shared">공용 · STEP 2</span>
-        <div class="screen-num">선택</div>
-        <div class="screen-title">현장 유저 다중 선택</div>
-        <div class="phone">
-          <div class="status"><span>9:41</span><span>🔋</span></div>
-          <div class="content">
-            <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:4px;">← &nbsp; 3명을 찾았어요</div>
-            <div class="user-list-title" style="text-align:left;font-size:9px;color:var(--sub);font-weight:700;margin-top:6px;">받을 사람을 선택하세요</div>
+            <div class="user-list-title" style="text-align:left;font-size:9px;color:var(--sub);font-weight:700;margin-top:8px;">받을 사람을 선택하세요</div>
             <div class="user-row">
               <div class="avatar">🙂</div>
               <div class="info"><div class="name">근처 기기 · 1.8m</div><div class="dist">굿딜 사용자</div></div>
@@ -560,11 +551,11 @@
             </div>
           </div>
         </div>
-        <div class="screen-note">체크박스로 복수 선택 → 한 번에 전송. 닉네임 대신 거리·익명 표기로 프라이버시 보호, 리스트는 거리순 정렬.</div>
+        <div class="screen-note">레이더는 화면 상단에 작게 남겨 스캔이 계속 진행 중임을 표시(새 기기 발견 시 리스트에 실시간 추가). 타이틀만 진입 경로별로 다르게(A는 "공유", B는 "찾기"). 체크박스로 복수 선택 → 한 번에 전송, 닉네임 대신 거리·익명 표기로 프라이버시 보호, 리스트는 거리순 정렬.</div>
       </div>
 
       <div class="screen-card">
-        <span class="tag shared">공용 · STEP 3</span>
+        <span class="tag shared">공용 · STEP 2</span>
         <div class="screen-num">전송 완료</div>
         <div class="screen-title">전송 완료 · 대기 상태</div>
         <div class="phone">
@@ -746,7 +737,7 @@
             </div>
           </div>
         </div>
-        <div class="screen-note">앱을 안 켜고 있어도(권한: 앱 사용 중 허용 + 최근 사용 기준) 저전력 감지 시 발송. 탭하면 STEP2 선택 화면으로 딥링크.</div>
+        <div class="screen-note">앱을 안 켜고 있어도(권한: 앱 사용 중 허용 + 최근 사용 기준) 저전력 감지 시 발송. 탭하면 STEP1(스캔·선택) 화면으로 딥링크.</div>
       </div>
 
       <div class="screen-card">
