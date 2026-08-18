@@ -125,7 +125,8 @@
   .radar .core{width:30px;height:30px;border-radius:50%;background:var(--violet);display:flex;align-items:center;justify-content:center;z-index:2;}
 
   /* orbit map - Toss-style radar with floating friend nodes */
-  .orbit-wrap{position:relative;flex:1;display:flex;align-items:center;justify-content:center;min-height:190px;}
+  .orbit-wrap{position:relative;flex:1;display:flex;align-items:center;justify-content:center;}
+  .orbit-square{position:relative;width:80%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;}
   .orbit-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border:1px solid var(--line);border-radius:50%;}
   .orbit-ring.r1{width:38%;height:38%;}
   .orbit-ring.r2{width:66%;height:66%;}
@@ -514,20 +515,19 @@
           <div class="content">
             <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:6px;">← &nbsp; 내주변 사람에게 공유</div>
             <div class="orbit-wrap">
-              <div class="orbit-ring r1"></div>
-              <div class="orbit-ring r2"></div>
-              <div class="orbit-ring r3"></div>
-              <div class="orbit-me">
-                <div class="ring"></div><div class="ring"></div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg>
-                <div class="orbit-me-label">나</div>
-              </div>
-              <div class="orbit-node" style="top:20%;left:66%;">
-                <div class="av">🙂</div>
-                <div class="cap">근처 친구 1명</div>
+              <div class="orbit-square">
+                <div class="orbit-me">
+                  <div class="ring"></div><div class="ring"></div>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg>
+                  <div class="orbit-me-label">나</div>
+                </div>
+                <div class="orbit-node" style="top:14%;left:64%;">
+                  <div class="av">🙂</div>
+                  <div class="cap">근처 친구 1명</div>
+                </div>
               </div>
             </div>
-            <div style="text-align:center;font-size:10px;font-weight:700;">현장에 있는 사람을<br>찾고 있어요</div>
+            <div style="text-align:center;font-size:10px;font-weight:700;padding-bottom:12px;">현장에 있는 사람을<br>찾고 있어요</div>
           </div>
         </div>
         <div class="screen-note">배너는 바텀시트 없이 원스텝으로 공용 STEP1(스캔·선택)로 바로 연결 — 헤더 경로(다채널 선택)보다 클릭 한 번 짧음. 블루투스로 친구를 찾는 즉시 궤도 위에 아바타로 떠오르는 토스 스타일 연출 적용.</div>
@@ -548,29 +548,28 @@
         <div class="screen-title">발견되는 대로 바로 선택</div>
         <div class="phone">
           <div class="status"><span>9:41</span><span>🔋</span></div>
-          <div class="content">
+          <div class="content" style="padding-bottom:14px;">
             <div style="font-size:9px;color:var(--sub);text-align:center;margin-top:6px;">← &nbsp; 내주변 사람에게 공유</div>
             <div style="text-align:center;font-size:9px;color:var(--violet);font-weight:800;margin-top:6px;">계속 찾는 중 · 3명 발견</div>
-            <div class="orbit-wrap">
-              <div class="orbit-ring r1"></div>
-              <div class="orbit-ring r2"></div>
-              <div class="orbit-ring r3"></div>
-              <div class="orbit-me">
-                <div class="ring"></div><div class="ring"></div>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg>
-                <div class="orbit-me-label">나</div>
-              </div>
-              <div class="orbit-node" style="top:8%;left:60%;">
-                <div class="av selected">🙂<div class="check"></div></div>
-                <div class="cap">1.8m · 선택됨</div>
-              </div>
-              <div class="orbit-node" style="top:62%;left:10%;animation-delay:1s;">
-                <div class="av selected">🙂<div class="check"></div></div>
-                <div class="cap">2.4m · 선택됨</div>
-              </div>
-              <div class="orbit-node" style="top:70%;left:68%;animation-delay:1.6s;">
-                <div class="av">🙂</div>
-                <div class="cap">5.1m</div>
+            <div class="orbit-wrap" style="flex:0.85;">
+              <div class="orbit-square">
+                <div class="orbit-me">
+                  <div class="ring"></div><div class="ring"></div>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 6.5L17.5 17.5L12 23V1L17.5 6.5L6.5 17.5"/></svg>
+                  <div class="orbit-me-label">나</div>
+                </div>
+                <div class="orbit-node" style="top:6%;left:58%;">
+                  <div class="av selected">🙂<div class="check"></div></div>
+                  <div class="cap">1.8m · 선택됨</div>
+                </div>
+                <div class="orbit-node" style="top:60%;left:4%;animation-delay:1s;">
+                  <div class="av selected">🙂<div class="check"></div></div>
+                  <div class="cap">2.4m · 선택됨</div>
+                </div>
+                <div class="orbit-node" style="top:68%;left:66%;animation-delay:1.6s;">
+                  <div class="av">🙂</div>
+                  <div class="cap">5.1m</div>
+                </div>
               </div>
             </div>
             <div class="send-cta">
